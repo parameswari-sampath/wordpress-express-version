@@ -1,0 +1,37 @@
+Here is a **complete table** summarizing all the current and potential issues you might face while building a WordPress-like plugin system in Express (without database yet):
+
+---
+
+### 🧩 **Plugin System Issues (No DB Yet)**
+
+| #  | Category             | Issue                               | Description                                                           |
+| -- | -------------------- | ----------------------------------- | --------------------------------------------------------------------- |
+| 1  | Plugin Structure     | Missing `views/` folder             | Not all plugins will have UI; avoid assuming view files exist.        |
+| 2  | Plugin Structure     | No `plugin.json` or invalid format  | Plugin metadata file might be missing or malformed.                   |
+| 3  | Plugin Routing       | Duplicate route paths               | Multiple plugins may define the same route (`/about`, `/settings`).   |
+| 4  | Plugin Routing       | Plugin overrides default/core route | Plugins may unintentionally override default routes like `/`.         |
+| 5  | Plugin Routing       | Missing or invalid `router` export  | Plugin might not export a usable Express router.                      |
+| 6  | Plugin Execution     | Plugin crashes or throws error      | A single plugin can bring the entire app down if not handled.         |
+| 7  | Plugin Execution     | No error isolation                  | Need try/catch around plugin execution to isolate issues.             |
+| 8  | Plugin Execution     | No logging/reporting                | Plugin errors might not be visible to the developer/admin.            |
+| 9  | Route Conflicts      | Middleware or global hooks conflict | Plugins might register middlewares that break other routes.           |
+| 10 | Plugin Naming        | Duplicate plugin names              | Two plugins with the same name cause conflict or overwrite.           |
+| 11 | Plugin Lifecycle     | No install/uninstall logic          | No way to cleanly remove a plugin’s routes or files.                  |
+| 12 | Plugin Lifecycle     | No plugin load order                | Plugins might rely on others being loaded before them.                |
+| 13 | Plugin Lifecycle     | No plugin activation/deactivation   | Plugins always load, no admin control to enable/disable.              |
+| 14 | Plugin Views         | Static asset conflicts              | CSS/JS files with same names can override each other.                 |
+| 15 | Plugin Views         | No layout override mechanism        | Plugins cannot change the main layout or use a custom one.            |
+| 16 | Developer Experience | No hot-reload for plugins           | Must restart server to reload changes in plugin code.                 |
+| 17 | Developer Experience | Shared global state                 | One plugin can accidentally affect another if globals are shared.     |
+| 18 | Developer Experience | No plugin sandboxing                | All plugins run in the same process without boundaries.               |
+| 19 | Testing              | No plugin test harness              | Can't test a plugin independently from the whole app.                 |
+| 20 | Admin UI             | No plugin status panel              | Admin can’t see plugin load success/failure from UI.                  |
+| 21 | Admin UI             | No plugin version or metadata shown | Useful info like version, author, description missing in dashboard.   |
+| 22 | File System          | Missing required files              | `index.js`, `views/`, or other expected files may not be present.     |
+| 23 | File System          | Dynamic path resolution errors      | Using `../../` for includes is fragile; needs better view resolution. |
+| 24 | Security             | Malicious plugins                   | A plugin could register dangerous routes, log data, or crash app.     |
+| 25 | Security             | Plugin route exposure               | No permission system; plugins might expose internal APIs.             |
+
+---
+
+Would you like a checklist version of this table too? Or a markdown file to include in your project repo?
