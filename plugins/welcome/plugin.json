@@ -1,0 +1,7 @@
+{
+  "name": "Welcome Plugin",
+  "slug": "welcome",
+  "description": "Displays a welcome page.",
+  "version": "1.0.0",
+  "author": "ExpressPress Team"
+}

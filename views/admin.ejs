@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+</head>
+<body>
+  <header>
+    <h2>🧱 ExpressPress</h2>
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/admin">Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>📋 Plugin Dashboard</h2>
+    <table border="1" cellpadding="8">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Slug</th>
+          <th>Description</th>
+          <th>Version</th>
+          <th>Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% plugins.forEach(plugin => { %>
+          <tr>
+            <td><%= plugin.name %></td>
+            <td><%= plugin.slug %></td>
+            <td><%= plugin.description %></td>
+            <td><%= plugin.version %></td>
+            <td><%= plugin.author %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </main>
+
+  <footer><p>© 2025 ExpressPress</p></footer>
+</body>
+</html>
